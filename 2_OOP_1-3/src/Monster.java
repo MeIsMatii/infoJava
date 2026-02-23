@@ -4,12 +4,16 @@ import java.util.List;
 
 public class Monster extends MovingActor{
     //Atribute
+    private World currentWorld;
     private int health;
     private int speed;
     private int frameCounter;
+    private int x;
+    private int y;
 
     //Konstruktoren
     public Monster() {
+        currentWorld = getWorld();
         setHealth(50);
         setSpeed(10); //wv frames pro bewegung
     }
@@ -20,6 +24,7 @@ public class Monster extends MovingActor{
     //setter/getter
     public void setHealth(int amount) {
         this.health = amount;
+        draw(this.health);
     }
     public int getHealth() {
         return this.health;
@@ -34,6 +39,7 @@ public class Monster extends MovingActor{
 
     public void act() {
         randomMove(speed);
+        hitPlayer(10);
     }
 
 
@@ -64,9 +70,20 @@ public class Monster extends MovingActor{
 
             }
             move();
+            x = getX();
+            y = getY();
         }
 
-
+    public void hitPlayer(int damage) {
+        if(isTouching(Player.class)) {
+            List<Player> players = currentWorld.getObjectsAt(x, y, Player.class);
+            if(players.isEmpty()) { //it shouldnt be empty
+               return;
+            }
+            Player player = players.get(0);
+            player.hit(damage);
+        }
+    }
 
     public void move() {
         move(1);

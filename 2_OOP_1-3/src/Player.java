@@ -67,6 +67,11 @@ public class Player extends MovingActor {
         draw(life);
     }
 
+    public void hit(int damage) {
+        setLife(getLife()-damage);
+        draw(getLife());
+    }
+
     /**
      * Wird einmal pro Zeiteinheit aufgerufen
      */
@@ -139,7 +144,7 @@ public class Player extends MovingActor {
 
         if (Greenfoot.isKeyDown("T")) {
             List<Carrot> carrots = currentWorld.getObjectsAt(x, y, Carrot.class);
-            if(carrots.size() > 0) {
+            if(!carrots.isEmpty()) {
                 Carrot carrot = carrots.get(0);
                 setCarrotInSlot(carrot,getCarrotAmount());
                 currentWorld.removeObject(carrot);
@@ -181,7 +186,7 @@ public class Player extends MovingActor {
         if(canMove()) {
             move();
         } else {
-            setLife(getLife() - 10);
+            hit(10);
         }
 
     }
