@@ -2,10 +2,8 @@ import greenfoot.*;
 
 import java.util.List;
 
-public class Monster extends MovingActor{
+public class Monster extends Character{
     //Atribute
-    private World currentWorld;
-    private int health;
     private int speed;
     private int frameCounter;
     private int x;
@@ -13,22 +11,21 @@ public class Monster extends MovingActor{
 
     //Konstruktoren
     public Monster() {
-        currentWorld = getWorld();
-        setHealth(50);
+        setLife(50);
         setSpeed(10); //wv frames pro bewegung
+    }
+    public Monster(int life, int speed) {
+        setLife(life);
+        setSpeed(speed); //wv frames pro bewegung
     }
 
 
     //Methoden
 
     //setter/getter
-    public void setHealth(int amount) {
-        this.health = amount;
-        draw(this.health);
-    }
-    public int getHealth() {
-        return this.health;
-    }
+
+
+
     public void setSpeed(int amount) {
         this.speed = amount;
     }
@@ -75,8 +72,9 @@ public class Monster extends MovingActor{
         }
 
     public void hitPlayer(int damage) {
+
         if(isTouching(Player.class)) {
-            List<Player> players = currentWorld.getObjectsAt(x, y, Player.class);
+            List<Player> players = getWorld().getObjectsAt(x, y, Player.class);
             if(players.isEmpty()) { //it shouldnt be empty
                return;
             }
