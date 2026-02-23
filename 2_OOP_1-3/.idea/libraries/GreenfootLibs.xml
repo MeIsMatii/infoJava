@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="GreenfootLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../greenfoot-sources-combined-main/threadchecker.jar!/" />
+      <root url="file://$USER_HOME$/libs/Greenfoot/lib/stylesheets" />
+      <root url="file://$USER_HOME$/libs/Greenfoot/lib" />
+      <root url="file://$USER_HOME$/libs/Greenfoot/lib" />
+      <root url="file://$USER_HOME$/libs/Greenfoot/lib/javafx/lib" />
+      <root url="file://$USER_HOME$/libs/Greenfoot/lib/javafx/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://C:/Program Files/Greenfoot/lib/javafx/lib" />
+      <root url="file://C:/Program Files/Greenfoot/lib/javafx/lib" />
+      <root url="file://$PROJECT_DIR$/../greenfoot-sources-combined-main/sources" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/libs/Greenfoot/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/libs/Greenfoot/lib/javafx/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/libs/Greenfoot/lib/javafx/lib" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Greenfoot/lib/javafx/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://C:/Program Files/Greenfoot/lib/javafx/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
