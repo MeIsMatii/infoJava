@@ -19,7 +19,6 @@ public class Player extends Character {
             Carrot carrot = new Carrot(3);
             setCarrotInSlot(carrot, getCarrotAmount());
         }
-
     }
 
     public Player(int life, int carrotAmount) {
@@ -28,7 +27,6 @@ public class Player extends Character {
             Carrot carrot = new Carrot(3);
             setCarrotInSlot(carrot, getCarrotAmount());
         }
-
     }
 
 
@@ -38,7 +36,6 @@ public class Player extends Character {
         if (slot >= 0 && slot < carrotInventory.length) {
             carrotInventory[slot] = newCarrot;
         }
-
     }
 
     public Carrot[] getCarrotInventory() {
@@ -67,13 +64,24 @@ public class Player extends Character {
      */
     public void act() {
         performMovement();
+
         turnDirection();
 
-        putCarrot();
-        takeCarrot();
-        eatCarrot();
-        hitStone();
-        hitMonster();
+        if (Greenfoot.isKeyDown("R")) {
+            putCarrot();
+        }
+        if (Greenfoot.isKeyDown("T")) {
+            takeCarrot();
+        }
+        if (Greenfoot.isKeyDown("Q")) {
+            eatCarrot();
+        }
+        if (Greenfoot.isKeyDown("E")) {
+            hitStone();
+        }
+        if (Greenfoot.isKeyDown("F")) {
+            hitMonster();
+        }
     }
 
     private void performMovement() {
@@ -92,7 +100,6 @@ public class Player extends Character {
         } else if (Greenfoot.isKeyDown("D")) {
             turn(Direction.EAST);
             wallDamage();
-
         }
         x = getX();
         y = getY();
@@ -112,65 +119,49 @@ public class Player extends Character {
 
         } else if (Greenfoot.isKeyDown("Right")) {
             turn(Direction.EAST);
-
         }
     }
 
     public void putCarrot() {
+        System.out.println(getCarrotAmount());
 
-
-        if (Greenfoot.isKeyDown("R")) {
-
-            System.out.println(getCarrotAmount());
-
-            if (getCarrotAmount() > 0) {
-                Carrot carrot = getCarrotInSlot(getCarrotAmount() - 1);
-                getWorld().addObject(carrot, x, y);
-                setCarrotInSlot(null, getCarrotAmount() - 1);
-            }
+        if (getCarrotAmount() > 0) {
+            Carrot carrot = getCarrotInSlot(getCarrotAmount() - 1);
+            getWorld().addObject(carrot, x, y);
+            setCarrotInSlot(null, getCarrotAmount() - 1);
         }
     }
 
     public void takeCarrot() {
-
-        if (Greenfoot.isKeyDown("T")) {
-            List<Carrot> carrots = getWorld().getObjectsAt(x, y, Carrot.class);
-            if (!carrots.isEmpty()) {
-                Carrot carrot = carrots.get(0);
-                setCarrotInSlot(carrot, getCarrotAmount());
-                getWorld().removeObject(carrot);
-            }
+        List<Carrot> carrots = getWorld().getObjectsAt(x, y, Carrot.class);
+        if (!carrots.isEmpty()) {
+            Carrot carrot = carrots.get(0);
+            setCarrotInSlot(carrot, getCarrotAmount());
+            getWorld().removeObject(carrot);
         }
     }
 
     public void eatCarrot() {
-
-        if (Greenfoot.isKeyDown("Q")) {
-            List<Carrot> carrots = getWorld().getObjectsAt(x, y, Carrot.class);
-            if (!carrots.isEmpty()) {
-                Carrot carrot = carrots.get(0);
-                getWorld().removeObject(carrot);
-                setLife(getLife() + carrot.getWeight());
-            }
+        List<Carrot> carrots = getWorld().getObjectsAt(x, y, Carrot.class);
+        if (!carrots.isEmpty()) {
+            Carrot carrot = carrots.get(0);
+            getWorld().removeObject(carrot);
+            setLife(getLife() + carrot.getWeight());
         }
     }
 
     public void hitStone() {
-        if (Greenfoot.isKeyDown("E")) {
-            List<Rock> rocks = getWorld().getObjectsAt(getNextX(1), getNextY(1), Rock.class);
-            if (!rocks.isEmpty()) {
-                Rock rock = rocks.get(0);
-                rock.hit();
-            }
+        List<Rock> rocks = getWorld().getObjectsAt(getNextX(1), getNextY(1), Rock.class);
+        if (!rocks.isEmpty()) {
+            Rock rock = rocks.get(0);
+            rock.hit();
         }
     }
 
     public void hitMonster() {
-        if (Greenfoot.isKeyDown("F")) {
-            List<Monster> monstersInRange = getNeighbours(1, true, Monster.class);
-            for (Monster monster : monstersInRange) {
-                monster.hit(10);
-            }
+        List<Monster> monstersInRange = getNeighbours(1, true, Monster.class);
+        for (Monster monster : monstersInRange) {
+            monster.hit(10);
         }
     }
 
@@ -183,7 +174,6 @@ public class Player extends Character {
             World level2 = new Level2();
             Greenfoot.setWorld(level2);
         }
-
     }
 
     public void wallDamage() {
