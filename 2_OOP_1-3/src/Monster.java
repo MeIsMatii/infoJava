@@ -22,9 +22,7 @@ public class Monster extends Character{
 
     //Methoden
 
-    //setter/getter
-
-
+        //setter/getter
 
     public void setSpeed(int amount) {
         this.speed = amount;
@@ -72,7 +70,6 @@ public class Monster extends Character{
         }
 
     public void hitPlayer(int damage) {
-
         if(isTouching(Player.class)) {
             List<Player> players = getWorld().getObjectsAt(x, y, Player.class);
             if(players.isEmpty()) { //it shouldnt be empty
