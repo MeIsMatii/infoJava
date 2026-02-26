@@ -1,0 +1,17 @@
+# Top-most EditorConfig file
+root = true
+
+[*]
+# Use UTF-8 for everything
+charset = utf-8
+# Standardize line endings to LF (Linux/Mac style)
+end_of_line = lf
+# Ensure files end with a blank line
+insert_final_newline = true
+# Strip extra whitespace at the end of lines
+trim_trailing_whitespace = true
+
+[*.{js,py,java}]
+# Set indentation to 4 spaces
+indent_style = space
+indent_size = 4
