@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# specific os specific files 
+build.xml/
+.idea/
 # Log file
 *.log
 
