@@ -2,7 +2,7 @@
 *.class
 
 # specific os specific files 
-build.xml/
+build.xml
 .idea/
 # Log file
 *.log
