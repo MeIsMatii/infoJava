@@ -1,0 +1,11 @@
+# --- Build & IDE Artifacts (These are always ignored) ---
+out/
+.idea/
+*.iml
+
+# --- Assets (You asked to remove these) ---
+images/
+
+# --- Keep everything else automatically ---
+# No extra rules needed! 
+# 'src', 'README.md', and future files are tracked by default.
