@@ -16,5 +16,5 @@
 
 ```
 ## Setup
-To setup a project, you must copy the `linux`/`windows` (OS-specific) folder and put it in the `projects` folder.
-Then create/copy the `src` folder. Upon pushing, only the `src` folder will be pushed, so people cloning it can do it OS-specific
+To setup a project, you must copy the `linux`/`windows` (OS-specific) folder and put it in the `projects` folder. \n
+Then create/copy the `src` folder. Upon pushing, only the `src` folder will be pushed, so people cloning it can set it up OS-specific
