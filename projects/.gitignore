@@ -29,8 +29,9 @@ out/
 .idea/
 *.iml
 
-# --- Assets (You asked to remove these) ---
+# --- Assets ---
 images/
 .editorconfig
+build.xml
 # --- Keep everything else automatically ---
 # 'src', 'README.md', and future files are tracked by default.

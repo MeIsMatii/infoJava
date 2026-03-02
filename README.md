@@ -19,3 +19,5 @@
 To setup a project, you must copy the `linux`/`windows` (OS-specific) folder and put it in the `projects` folder. 
 
 After that, you can create/copy the `src` folder. Upon pushing, only the `src` folder will be pushed, so people cloning it can set it up OS-specific
+
+Last step: rename the `.name` file found in `os/.idea/` to the project name
