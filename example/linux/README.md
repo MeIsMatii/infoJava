@@ -1,1 +1,0 @@
-This is the "linux" example config 

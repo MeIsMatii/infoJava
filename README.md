@@ -1,9 +1,20 @@
-Installation requirements:
+```text
+/ (Root)
+├── example/              # Example implementations
+│   ├── linux/            # Linux-specific build configs (sources missing)
+│   └── windows/          # Windows-specific build configs and assets (sources missing)
+│       ├── images/       # Game sprites and textures (PNG/GIF)
+│       └── ...           # Other build artifacts
+├── projects/
+│   ├── 2_OOP_1-3/        # Main project 1       
+│   │   ├── src/          # Source code (.java files)
+│   │   └── ...           # Config files
+│   └── 2_VOOP_4_Inventar/  # Main project 2
+│       └── src/          # Source code (.java files)
+└── README.md
 
-- greenfoot-combined-sources
-- intelliJ IDEA
-- greenfoot 3.7.1
-- java11
 
-It's currently configured at File/Project Structure/Libraries/GreenfootLibs in IDEA that all sources are at ~/libs.
-You should change that. If you do, also change the run config VM options or else it won't work
+```
+**SETUP**
+To setup a project, you must copy the `linux`/`windows` (OS-specific) folder and put it in the `projects` folder.
+Then create/copy the `src` folder. Upon pushing, only the `src` folder will be pushed, so people cloning it can do it OS-specific
