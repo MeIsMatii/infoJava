@@ -18,4 +18,6 @@ To setup a project, you must copy the `linux`/`windows` (OS-specific) folder and
 
 After that, you can create/copy the `src` folder. Upon pushing, only the `src` folder will be pushed, so people cloning it can set it up OS-specific
 
-Last step: rename the contents of the `.name` file found in `os/.idea/` to the project name.
+## Rename 
+To rename the project, you must go to `Refactor ─> Rename` and type the new name in there. Then close intelliJ and rename the folder itself (i think)
+If it works, good. If it doesn't, problem for future me :D
