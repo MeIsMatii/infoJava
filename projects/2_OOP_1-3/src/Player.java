@@ -170,7 +170,7 @@ public class Player extends Character {
      */
     public void move() {
         move(1);
-        if (getNextX(1) > getWorld().getWidth()-1 && getWorld() instanceof Level1) {
+        if (getNextX(1) >= getWorld().getWidth() && getWorld() instanceof Level1) {
             World level2 = new Level2();
             Greenfoot.setWorld(level2);
         }
