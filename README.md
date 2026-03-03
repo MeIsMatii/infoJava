@@ -12,8 +12,6 @@
 │   └── 2_VOOP_4_Inventar/  # Main project 2
 │       └── src/          # Source code (.java files)
 └── README.md
-
-
 ```
 ## Setup
 To setup a project, you must copy the `linux`/`windows` (OS-specific) folder and put it in the `projects` folder. 
