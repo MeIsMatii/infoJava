@@ -19,7 +19,7 @@ public class Player extends MovingActor {
     //Methoden
     public void addedToWorld(World thisWorld){
         this.visualizer = new InventoryVisualizer(this.carrots);
-        thisWorld.addObject(this.visualizer, 0, -1);
+        thisWorld.addObject(this.visualizer, 0, thisWorld.getHeight()-1);
         //TODO: 2) Erstellen Sie neues Objekt vom Typ InventoryVisualizer und übergeben die Karotten als das zu visualisierende Inventar.
         //TODO: 3) Plazieren Sie das Objekt vom Type InventoryVisualizer in der Welt (0, Höhe der Welt -1) => unten links
 

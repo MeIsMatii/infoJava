@@ -11,7 +11,7 @@ public class InventorySlot extends Actor
     // Corrected path
     private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage("EmptySlot.png");
     //this was wrong
-    // private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage(".\\images\\EmptySlot.png"); 
+    // private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage(".\\images\\EmptySlot.png");
     public InventorySlot(){
         setImage(new GreenfootImage(InventorySlot.EMPTY_SLOT_IMG));
     }
