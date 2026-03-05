@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fc013547-6341-4d52-858b-c830a1da20b3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Axe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Backpack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/EmptySlot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Hole.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Key.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Lever_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Lever_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/MovingActor/EAST0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/MovingActor/NORTH0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/MovingActor/SOUTH0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/MovingActor/WEST0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/PickAxe40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/EAST0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/EAST1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/EAST2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/EAST3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/NORTH0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/NORTH1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/NORTH2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/NORTH3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/SOUTH0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/SOUTH1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/SOUTH2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/SOUTH3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/WEST0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/WEST1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/WEST2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Player/WEST3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Ring.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Snake/EAST0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Snake/NORTH0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Snake/SOUTH0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Snake/WEST0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Stern2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Thicket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/Tree.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/apple1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/bananas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/bus_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/cell.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/hase.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/karotte.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/potion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/rock.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/images/tree2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/Carrot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/ImprovedActor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/ImprovedGreenfootImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/InventorySlot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/InventoryVisualizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/Level1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/MovingActor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/Rock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/Star.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/project.greenfoot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/2_VOOP_4_Inventar/src/standalone.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MeIsMatii&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:MeIsMatii/infoJava.git&quot;,
+    &quot;accountId&quot;: &quot;9837643f-320e-4dad-a7a1-e4c64df62746&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3AE4JfkI6hTS31ZAdqKf7JRCB2V" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Run Scenario.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mati/gitHub/infoJava/example/project_linux",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc013547-6341-4d52-858b-c830a1da20b3" name="Changes" comment="" />
+      <created>1772144325106</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772144325106</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -7,11 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class InventorySlot extends Actor
 {
     private Actor item;
+    
+    private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage(".\\images\\EmptySlot.png");
 
-    // Corrected path
-    private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage("EmptySlot.png");
-    //this was wrong
-    // private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage(".\\images\\EmptySlot.png"); 
     public InventorySlot(){
         setImage(new GreenfootImage(InventorySlot.EMPTY_SLOT_IMG));
     }

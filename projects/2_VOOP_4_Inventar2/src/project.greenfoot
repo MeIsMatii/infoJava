@@ -1,0 +1,10 @@
+#Greenfoot project file
+class.Carrot.image=karotte.png
+class.InventorySlot.image=EmptySlot.png
+class.MovingActor.image=Player.png
+class.Player.image=Player.png
+class.Rock.image=rock.gif
+class.Star.image=Stern2.png
+project.charset=windows-1252
+simulation.speed=30
+world.lastInstantiated=Level1

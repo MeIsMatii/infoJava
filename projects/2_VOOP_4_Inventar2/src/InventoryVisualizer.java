@@ -20,7 +20,7 @@ public class InventoryVisualizer extends Actor {
     public void act(){
         update();
     }
-
+    
     protected void addedToWorld(World world){
         for(int i=0; i < slots.length; i++){
             slots[i] = createItemSlot(i);
@@ -33,10 +33,10 @@ public class InventoryVisualizer extends Actor {
         return slot;
     }
 
-
+    
     /**
      * Updates all inventory Slots at the bottom of the screen with the content of the given inventory Array
-     */
+     */ 
     private void update() {
         int length = Math.min(inventory.length, this.slots.length);
         for (int i = 0; i < length; i++) {
