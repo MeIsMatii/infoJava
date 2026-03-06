@@ -11,7 +11,7 @@ public class Player extends MovingActor {
 
     //Attribute
     //TODO: 1) Attribut vom Typ InventoryVisualizer deklarieren mit dem Namen vizualizer
-    private final Carrot[] inventory = new Carrot[8];
+    private final Item[] inventory = new Item[8];
     private final InventoryVisualizer visualizer = new InventoryVisualizer(this.inventory);
     private int currentSlot = 0;
 
@@ -56,19 +56,19 @@ public class Player extends MovingActor {
         }
     }
     private void pickSlot() {
-        List<Carrot> objs = getWorld().getObjectsAt(getX(), getY(), Carrot.class);
+        List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
         if(currentSlot > inventory.length) {
             return;
         }
         if(!objs.isEmpty()){
-            Carrot obj = objs.get(0);
+            Item obj = objs.get(0);
             if(inventory[currentSlot]==null){
                 inventory[currentSlot]=obj;
                 getWorld().removeObject(obj);
                 return;  //beendet die gesamte Methode
             }
             // slot not empty
-            Carrot objToAdd = inventory[currentSlot];
+            Item objToAdd = inventory[currentSlot];
             inventory[currentSlot]=null;
             inventory[currentSlot]=obj;
             getWorld().removeObject(obj);
@@ -80,19 +80,19 @@ public class Player extends MovingActor {
             return;
         }
         if(inventory[currentSlot] != null) {
-            Carrot objToAdd = inventory[currentSlot];
+            Item objToAdd = inventory[currentSlot];
             inventory[currentSlot] = null;
             getWorld().addObject(objToAdd, getX(), getY());
         }
     }
 
     private void pick(){
-        List<Carrot> objs = getWorld().getObjectsAt(getX(), getY(), Carrot.class);
+        List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
 
         if(!objs.isEmpty()){
             for(int i = 0; i< inventory.length; i++){
                 if(inventory[i]==null){
-                    Carrot obj = objs.get(0);
+                    Item obj = objs.get(0);
                     inventory[i]=obj;
                     getWorld().removeObject(obj);
                     return;  //beendet die gesamte Methode
