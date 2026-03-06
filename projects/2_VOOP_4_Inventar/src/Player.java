@@ -1,3 +1,4 @@
+import com.sun.media.jfxmedia.events.PlayerStateEvent;
 import greenfoot.*;
 
 import java.util.List;
@@ -10,15 +11,16 @@ public class Player extends MovingActor {
 
     //Attribute
     //TODO: 1) Attribut vom Typ InventoryVisualizer deklarieren mit dem Namen vizualizer
-    private final Carrot[] carrots = new Carrot[8];
-    private  InventoryVisualizer visualizer;
+    private final Carrot[] inventory = new Carrot[8];
+    private final InventoryVisualizer visualizer = new InventoryVisualizer(this.inventory);
+    private int currentSlot = 0;
 
 
+ 
     //Konstruktoren
 
     //Methoden
     public void addedToWorld(World thisWorld){
-        this.visualizer = new InventoryVisualizer(this.carrots);
         thisWorld.addObject(this.visualizer, 0, thisWorld.getHeight()-1);
         //TODO: 2) Erstellen Sie neues Objekt vom Typ InventoryVisualizer und übergeben die Karotten als das zu visualisierende Inventar.
         //TODO: 3) Plazieren Sie das Objekt vom Type InventoryVisualizer in der Welt (0, Höhe der Welt -1) => unten links
@@ -32,25 +34,66 @@ public class Player extends MovingActor {
      */
     public void act() {
         performMovement();
-
+        selectSlot();
         if (Greenfoot.isKeyDown("E")) {
-            pick();
+            pickSlot();
         }
 
         if (Greenfoot.isKeyDown("R")) {
-            put();
+            putSlot();
         }
     }
-
+    private void selectSlot() {
+        String lastKey = Greenfoot.getKey();
+        for(int i = 0; i < inventory.length; i++) {
+            if(lastKey != null  && lastKey.equals(String.valueOf(i))) {
+                if(i == 0) {
+                    currentSlot = 9;
+                }
+                currentSlot = i -1;
+                return;
+            }
+        }
+    }
+    private void pickSlot() {
+        List<Carrot> objs = getWorld().getObjectsAt(getX(), getY(), Carrot.class);
+        if(currentSlot > inventory.length) {
+            return;
+        }
+        if(!objs.isEmpty()){
+            Carrot obj = objs.get(0);
+            if(inventory[currentSlot]==null){
+                inventory[currentSlot]=obj;
+                getWorld().removeObject(obj);
+                return;  //beendet die gesamte Methode
+            }
+            // slot not empty
+            Carrot objToAdd = inventory[currentSlot];
+            inventory[currentSlot]=null;
+            inventory[currentSlot]=obj;
+            getWorld().removeObject(obj);
+            getWorld().addObject(objToAdd, getX(), getY());
+        }
+    }
+    private void putSlot() {
+        if(currentSlot > inventory.length) {
+            return;
+        }
+        if(inventory[currentSlot] != null) {
+            Carrot objToAdd = inventory[currentSlot];
+            inventory[currentSlot] = null;
+            getWorld().addObject(objToAdd, getX(), getY());
+        }
+    }
 
     private void pick(){
         List<Carrot> objs = getWorld().getObjectsAt(getX(), getY(), Carrot.class);
 
         if(!objs.isEmpty()){
-            for(int i = 0; i< carrots.length; i++){
-                if(carrots[i]==null){
+            for(int i = 0; i< inventory.length; i++){
+                if(inventory[i]==null){
                     Carrot obj = objs.get(0);
-                    carrots[i]=obj;
+                    inventory[i]=obj;
                     getWorld().removeObject(obj);
                     return;  //beendet die gesamte Methode
                 }
@@ -59,10 +102,10 @@ public class Player extends MovingActor {
     }
 
     private void put(){
-        for(int i = 0; i< carrots.length; i++){
-            if(carrots[i]!=null){
-                getWorld().addObject(carrots[i], getX(), getY());
-                carrots[i]=null;
+        for(int i = 0; i< inventory.length; i++){
+            if(inventory[i]!=null){
+                getWorld().addObject(inventory[i], getX(), getY());
+                inventory[i]=null;
                 return; //beendet die gesamte Methode
             }
         }

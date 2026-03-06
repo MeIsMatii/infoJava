@@ -9,9 +9,9 @@ public class InventorySlot extends Actor
     private Actor item;
 
     // Corrected path
-    private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage("EmptySlot.png");
+    //private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage("EmptySlot.png");
     //this was wrong
-    // private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage(".\\images\\EmptySlot.png");
+    private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage("./images/EmptySlot.png");
     public InventorySlot(){
         setImage(new GreenfootImage(InventorySlot.EMPTY_SLOT_IMG));
     }
@@ -23,9 +23,8 @@ public class InventorySlot extends Actor
 
     public void setItem(Actor item){
         this.item = item;
-        if(item==null){
-            setImage(new GreenfootImage(InventorySlot.EMPTY_SLOT_IMG));
-        }else{
+        setImage(new GreenfootImage(InventorySlot.EMPTY_SLOT_IMG));
+        if(item!=null){
             getImage().drawImage(new GreenfootImage(item.getImage()), 5, 5);
         }
     }
