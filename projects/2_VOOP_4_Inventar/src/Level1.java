@@ -31,6 +31,10 @@ public class Level1 extends World
     {
         //Apple apple = new Apple();
         //addObject(apple,2,2);
+        Item[] merchantShop = new Item[]{new Carrot(3), new Carrot(54), new Apple()};
+        //Item[] merchantShop = new Item[3];
+        Merchant merchant = new Merchant(merchantShop, getWidth());
+        addObject(merchant,0,0);
         Carrot carrot = new Carrot(2);
         addObject(carrot,6,4);
         Carrot carrot2 = new Carrot(5);

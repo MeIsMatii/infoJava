@@ -11,17 +11,39 @@ public class Player extends MovingActor {
 
     //Attribute
     //TODO: 1) Attribut vom Typ InventoryVisualizer deklarieren mit dem Namen vizualizer
-    private final Item[] inventory = new Item[8];
-    private final InventoryVisualizer visualizer = new InventoryVisualizer(this.inventory);
+    private final Item[] inventory;
     private int currentSlot = 0;
-
-
+    private int gold;
+    private World currentWorld;
 
     //Konstruktoren
+    //default
+    public Player() {
+        this.inventory = new Item[8];
+        this.gold = 0;
+    }
+
+    public Player(int invSize, int gold) {
+        this.inventory = new Item[invSize];
+        this.gold = gold;
+    }
+
+
+
 
     //Methoden
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
     public void addedToWorld(World thisWorld){
-        thisWorld.addObject(this.visualizer, 0, thisWorld.getHeight()-1);
+        this.currentWorld = thisWorld;
+        InventoryVisualizer visualizer = new InventoryVisualizer(this.inventory);
+        currentWorld.addObject(visualizer, 0, thisWorld.getHeight()-1);
         //TODO: 2) Erstellen Sie neues Objekt vom Typ InventoryVisualizer und übergeben die Karotten als das zu visualisierende Inventar.
         //TODO: 3) Plazieren Sie das Objekt vom Type InventoryVisualizer in der Welt (0, Höhe der Welt -1) => unten links
 
@@ -131,6 +153,5 @@ public class Player extends MovingActor {
         }
 
     }
-
 
 }
