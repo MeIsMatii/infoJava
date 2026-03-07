@@ -19,7 +19,7 @@ public class Player extends Character {
     //default
     public Player() {
         this.inventory = new Item[8];
-        this.gold = 1;
+        this.gold = 0;
     }
 
     public Player(int invSize, int gold) {
@@ -78,6 +78,7 @@ public class Player extends Character {
             }
         }
     }
+
     private void pickSlot() {
         List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
         if(getSelectedSlot() > inventory.length) {
@@ -91,6 +92,7 @@ public class Player extends Character {
                 return;  //beendet die gesamte Methode
             }
             // slot not empty
+            //putSlot();
             Item objToAdd = inventory[getSelectedSlot()];
             inventory[getSelectedSlot()]=obj;
             getWorld().removeObject(obj);
@@ -132,6 +134,7 @@ public class Player extends Character {
         if (!isTouching(Merchant.class)) {
             return;
         }
+        draw(getGold());
         List<Merchant> merchants = currentWorld.getObjectsAt(getX(),getY(), Merchant.class);
         Merchant merchant = merchants.get(0);
         if(Greenfoot.isKeyDown("E")) {
@@ -143,11 +146,15 @@ public class Player extends Character {
         if(Greenfoot.isKeyDown("SPACE")) {
             buyItem();
         }
+        if(Greenfoot.isKeyDown("TAB")) {
+            sellItem();
+        }
     }
     public void buyItem() {
         if (!isTouching(Merchant.class)) {
             return;
         }
+
         List<Merchant> merchants = currentWorld.getObjectsAt(getX(),getY(), Merchant.class);
         Merchant merchant = merchants.get(0);
         Item item = merchant.getCurrentItem();
@@ -167,5 +174,11 @@ public class Player extends Character {
         setGold(getGold()-item.getValue()); //remove the money
         merchant.buyItem(merchant.getSelectedSlot());  //one item per slot
     }
-
+    public void sellItem() {
+        if (!isTouching(Merchant.class) || inventory[getSelectedSlot()] == null) {
+            return;
+        }
+        setGold(getGold() + inventory[getSelectedSlot()].getValue());
+        inventory[getSelectedSlot()] = null;
+    }
 }

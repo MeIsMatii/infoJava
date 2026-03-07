@@ -32,4 +32,9 @@ public class ImprovedActor extends Actor {
     public void draw(int value){
         draw(String.valueOf(value));
     }
+    public void drawPrice(int value){
+        ImprovedGreenfootImage image = new ImprovedGreenfootImage(getImage());
+        image.drawString(String.valueOf(value), 0, 49);
+        super.setImage(image);
+    }
 }

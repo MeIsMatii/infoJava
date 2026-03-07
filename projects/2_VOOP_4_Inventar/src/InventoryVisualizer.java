@@ -65,7 +65,7 @@ public class InventoryVisualizer extends Actor {
     }
 
 
-    //i did this myself
+    //i did this myselfd
     public void removeInventory() {
         for (InventorySlot slot : slots) { //same as "for i in list"
             getWorld().removeObject(slot);

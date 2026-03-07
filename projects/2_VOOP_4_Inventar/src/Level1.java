@@ -16,11 +16,14 @@ public class Level1 extends World
     {
         super(8, 8, 60);
         setBackground("cell.jpg");
-        setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
+        setPaintOrder(HotbarSelector.class,InventorySlot.class, Player.class, Carrot.class, Rock.class);
         Player player = new Player();
         addObject(player, 4, 4);
 
         prepare();
+
+
+        HotbarSelector hotbarSelector = new HotbarSelector();
     }
 
     /**

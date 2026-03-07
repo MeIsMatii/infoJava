@@ -1,12 +1,10 @@
 import greenfoot.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Merchant extends Character{
     private Item[] shop;
     private InventoryVisualizer shopDisplay;
     private boolean isShopVisible = false;
-    private List<ImprovedActor> mobList = new ArrayList<ImprovedActor>();;
 
     public Merchant(Item[] shop, int worldWidth) {
         int finalSize = Math.min(shop.length, worldWidth);
@@ -48,40 +46,30 @@ public class Merchant extends Character{
     public void hideShop() {
         if(!isTouching(Player.class)) {
             shopDisplay.removeInventory();
+            for(int i = 0; i<shop.length;i++) {
+                getWorld().showText("", i, getWorld().getHeight() -2); //replace with empty string to rm old text
+            }
             System.out.println("hide shop");
             isShopVisible = false;
         }
     }
     public void showShop() {
         if(isTouching(Player.class)) {
-            checkCollision(shop.length, getWorld().getHeight() - 2);
             shopDisplay = new InventoryVisualizer(this.shop, this);
             getWorld().addObject(shopDisplay, 0, getWorld().getHeight() - 2);
+            for(int i = 0; i<shop.length;i++) {
+                if(shop[i] == null) {
+                    continue;
+                }
+                getWorld().showText(String.valueOf(shop[i].getValue()), i, getWorld().getHeight() -2);
+            }
             System.out.println("show shop");
             isShopVisible = true;
         }
     }
     public void buyItem(int slot) {
         shop[slot] = null;
-    }
-    //incase there is anything in the way of the shop inventory
-    public void checkCollision(int length, int y) {
-        World currentWorld = getWorld();
-        for(int x = 0; x<length;x++) {
-            List<ImprovedActor> objs = currentWorld.getObjectsAt(x,y,ImprovedActor.class);
-            if(!objs.isEmpty()) {
-                mobList.addAll(objs);
-            }
-
-        }
-        for(ImprovedActor obj: mobList) {
-            currentWorld.removeObject(obj);
-            //need to get the old location somehow
-        }
+        getWorld().showText("", slot, getWorld().getHeight() -2); //replace with empty string to rm old text
     }
 
-    //shitty name
-    public void addObjectsBack() {
-        //need to get the old location somehow
-    }
 }
