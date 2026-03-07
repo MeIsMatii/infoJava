@@ -6,11 +6,14 @@ public class InventoryVisualizer extends Actor {
 
     private final InventorySlot[] slots;
     private final Actor[] inventory;
+    private final Character owner;
+    private HotbarSelector currentSelector = null;
 
-    public InventoryVisualizer(Actor[] inventory) {
+    public InventoryVisualizer(Actor[] inventory, Character owner) {
         getImage().setTransparency(0);
         slots = new InventorySlot[inventory.length];
         this.inventory = inventory;
+        this.owner = owner;
     }
 
   /*  public InventoryVisualizer(List<Actor> inventory) {
@@ -43,6 +46,13 @@ public class InventoryVisualizer extends Actor {
             if (inventory[i] != this.slots[i].getItem()) {
                 slots[i].setItem(inventory[i]);
             }
+
+        HotbarSelector hotbarSelector = new HotbarSelector();
+        getWorld().addObject( hotbarSelector, owner.getSelectedSlot(), getY());
+        if(currentSelector != null) {
+            getWorld().removeObject(currentSelector);
+        }
+        currentSelector = hotbarSelector;
         }
     }
 

@@ -2,6 +2,7 @@
 class.Carrot.image=karotte.png
 class.Apple.image=apple1.png
 class.InventorySlot.image=EmptySlot.png
+class.HotbarSelector.image=hotbar_selector.png
 class.MovingActor.image=Player.png
 class.Player.image=Player.png
 class.Merchant.image=Merchant.png

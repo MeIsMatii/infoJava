@@ -7,12 +7,11 @@ import java.util.List;
  * @author SAE
  * @version 3.0
  */
-public class Player extends MovingActor {
+public class Player extends Character {
 
     //Attribute
     //TODO: 1) Attribut vom Typ InventoryVisualizer deklarieren mit dem Namen vizualizer
     private final Item[] inventory;
-    private int currentSlot = 0;
     private int gold;
     private World currentWorld;
 
@@ -42,7 +41,7 @@ public class Player extends MovingActor {
 
     public void addedToWorld(World thisWorld){
         this.currentWorld = thisWorld;
-        InventoryVisualizer visualizer = new InventoryVisualizer(this.inventory);
+        InventoryVisualizer visualizer = new InventoryVisualizer(this.inventory, this);
         currentWorld.addObject(visualizer, 0, thisWorld.getHeight()-1);
         //TODO: 2) Erstellen Sie neues Objekt vom Typ InventoryVisualizer und übergeben die Karotten als das zu visualisierende Inventar.
         //TODO: 3) Plazieren Sie das Objekt vom Type InventoryVisualizer in der Welt (0, Höhe der Welt -1) => unten links
@@ -67,72 +66,47 @@ public class Player extends MovingActor {
     }
     private void selectSlot() {
         String lastKey = Greenfoot.getKey();
-        for(int i = 0; i < inventory.length; i++) {
+        for(int i = 0; i < inventory.length+1; i++) {
             if(lastKey != null  && lastKey.equals(String.valueOf(i))) {
                 if(i == 0) {
-                    currentSlot = 9;
+                    setSelectedSlot(9);
+                    return;
                 }
-                currentSlot = i -1;
+                setSelectedSlot(i-1);
                 return;
             }
         }
     }
     private void pickSlot() {
         List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
-        if(currentSlot > inventory.length) {
+        if(getSelectedSlot() > inventory.length) {
             return;
         }
         if(!objs.isEmpty()){
             Item obj = objs.get(0);
-            if(inventory[currentSlot]==null){
-                inventory[currentSlot]=obj;
+            if(inventory[getSelectedSlot()]==null){
+                inventory[getSelectedSlot()]=obj;
                 getWorld().removeObject(obj);
                 return;  //beendet die gesamte Methode
             }
             // slot not empty
-            Item objToAdd = inventory[currentSlot];
-            inventory[currentSlot]=null;
-            inventory[currentSlot]=obj;
+            Item objToAdd = inventory[getSelectedSlot()];
+            inventory[getSelectedSlot()]=null;
+            inventory[getSelectedSlot()]=obj;
             getWorld().removeObject(obj);
             getWorld().addObject(objToAdd, getX(), getY());
         }
     }
     private void putSlot() {
-        if(currentSlot > inventory.length) {
+        if(getSelectedSlot() > inventory.length) {
             return;
         }
-        if(inventory[currentSlot] != null) {
-            Item objToAdd = inventory[currentSlot];
-            inventory[currentSlot] = null;
+        if(inventory[getSelectedSlot()] != null) {
+            Item objToAdd = inventory[getSelectedSlot()];
+            inventory[getSelectedSlot()] = null;
             getWorld().addObject(objToAdd, getX(), getY());
         }
     }
-
-    private void pick(){
-        List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
-
-        if(!objs.isEmpty()){
-            for(int i = 0; i< inventory.length; i++){
-                if(inventory[i]==null){
-                    Item obj = objs.get(0);
-                    inventory[i]=obj;
-                    getWorld().removeObject(obj);
-                    return;  //beendet die gesamte Methode
-                }
-            }
-        }
-    }
-
-    private void put(){
-        for(int i = 0; i< inventory.length; i++){
-            if(inventory[i]!=null){
-                getWorld().addObject(inventory[i], getX(), getY());
-                inventory[i]=null;
-                return; //beendet die gesamte Methode
-            }
-        }
-    }
-
 
     /**
      * W - A - S - D movement
@@ -152,6 +126,20 @@ public class Player extends MovingActor {
             move(1);
         }
 
+    }
+
+    public void buyItem() {
+        if (!isTouching(Merchant.class)) {
+            return;
+        }
+        List<Merchant> merchants = currentWorld.getObjectsAt(getX(),getY(), Merchant.class);
+        Merchant merchant = merchants.get(0);
+        if(Greenfoot.isKeyDown("E")) {
+            merchant.setCurrentSlot(merchant.getCurrentSlot()+1);
+        }
+        if(Greenfoot.isKeyDown("E")) {
+            merchant.setCurrentSlot(merchant.getCurrentSlot()-1);
+        }
     }
 
 }
