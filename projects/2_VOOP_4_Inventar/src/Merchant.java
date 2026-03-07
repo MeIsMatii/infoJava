@@ -4,7 +4,6 @@ public class Merchant extends Character{
     private Item[] shop;
     private final InventoryVisualizer shopDisplay;
     private boolean isShopVisible = false;
-    private int currentSlot = 0;
 
     public Merchant(Item[] shop, int worldWidth) {
         int finalSize = Math.min(shop.length, worldWidth);
@@ -17,16 +16,8 @@ public class Merchant extends Character{
     }
 
 
-    public int getCurrentSlot() {
-        return this.currentSlot;
-    }
-
-    public void setCurrentSlot(int currentSlot) {
-        this.currentSlot = currentSlot;
-    }
-
     public Item getCurrentItem() {
-        return this.shop[currentSlot];
+        return this.shop[getSelectedSlot()];
     }
 
 
@@ -44,11 +35,11 @@ public class Merchant extends Character{
     }
 
     public void wrapSlot() {
-        if(currentSlot < 0) {
-            currentSlot = this.shop.length;
+        if(getSelectedSlot() < 0) {
+            setSelectedSlot(this.shop.length-1);
         }
-        if(currentSlot > this.shop.length) {
-            currentSlot = 0;
+        if(getSelectedSlot() >= this.shop.length) {
+            setSelectedSlot(0);
         }
     }
     public void hideShop() {

@@ -56,6 +56,7 @@ public class Player extends Character {
     public void act() {
         performMovement();
         selectSlot();
+        buyItem();
         if (Greenfoot.isKeyDown("E")) {
             pickSlot();
         }
@@ -135,10 +136,10 @@ public class Player extends Character {
         List<Merchant> merchants = currentWorld.getObjectsAt(getX(),getY(), Merchant.class);
         Merchant merchant = merchants.get(0);
         if(Greenfoot.isKeyDown("E")) {
-            merchant.setCurrentSlot(merchant.getCurrentSlot()+1);
+            merchant.setSelectedSlot(merchant.getSelectedSlot()+1);
         }
-        if(Greenfoot.isKeyDown("E")) {
-            merchant.setCurrentSlot(merchant.getCurrentSlot()-1);
+        if(Greenfoot.isKeyDown("Q")) {
+            merchant.setSelectedSlot(merchant.getSelectedSlot()-1);
         }
     }
 
