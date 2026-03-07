@@ -31,7 +31,7 @@ public class Level1 extends World
     {
         //Apple apple = new Apple();
         //addObject(apple,2,2);
-        Item[] merchantShop = new Item[]{new Carrot(3), new Carrot(54), new Apple(), new Apple()};
+        Item[] merchantShop = new Item[]{new Carrot(3), new Carrot(54), new Apple(), null};
         //Item[] merchantShop = new Item[3];
         Merchant merchant = new Merchant(merchantShop, getWidth());
         addObject(merchant,0,0);
@@ -40,7 +40,7 @@ public class Level1 extends World
         Carrot carrot2 = new Carrot(5);
         addObject(carrot2,3,3);
         Carrot carrot3 = new Carrot(7);
-        addObject(carrot3,2,5);
+        addObject(carrot3,2,6);
         Rock rock = new Rock();
         addObject(rock, 4, 5);
     }

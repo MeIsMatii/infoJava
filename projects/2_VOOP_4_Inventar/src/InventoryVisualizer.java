@@ -29,6 +29,7 @@ public class InventoryVisualizer extends Actor {
         for(int i=0; i < slots.length; i++){
             slots[i] = createItemSlot(i);
         }
+        updateSlotSelector();
     }
 
     private InventorySlot createItemSlot(int i) {
@@ -48,6 +49,9 @@ public class InventoryVisualizer extends Actor {
                 slots[i].setItem(inventory[i]);
             }
         }
+        updateSlotSelector();
+    }
+    public void updateSlotSelector() {
         if (owner.getSelectedSlot() == lastSelectedSlot) {
             return;
         }
@@ -58,6 +62,18 @@ public class InventoryVisualizer extends Actor {
         }
         lastSelectedSlot = owner.getSelectedSlot();
         currentSelector = hotbarSelector;
+    }
+
+
+    //i did this myself
+    public void removeInventory() {
+        for (InventorySlot slot : slots) { //same as "for i in list"
+            getWorld().removeObject(slot);
+        }
+        if (currentSelector != null) {
+            getWorld().removeObject(currentSelector);
+        }
+        currentSelector = null;
     }
 
 }

@@ -19,7 +19,7 @@ public class Player extends Character {
     //default
     public Player() {
         this.inventory = new Item[8];
-        this.gold = 0;
+        this.gold = 1;
     }
 
     public Player(int invSize, int gold) {
@@ -56,8 +56,8 @@ public class Player extends Character {
     public void act() {
         performMovement();
         selectSlot();
-        buyItem();
-        if (Greenfoot.isKeyDown("E")) {
+        interactMerchant();
+        if (Greenfoot.isKeyDown("F")) {
             pickSlot();
         }
 
@@ -92,7 +92,6 @@ public class Player extends Character {
             }
             // slot not empty
             Item objToAdd = inventory[getSelectedSlot()];
-            inventory[getSelectedSlot()]=null;
             inventory[getSelectedSlot()]=obj;
             getWorld().removeObject(obj);
             getWorld().addObject(objToAdd, getX(), getY());
@@ -129,7 +128,7 @@ public class Player extends Character {
 
     }
 
-    public void buyItem() {
+    public void interactMerchant() {
         if (!isTouching(Merchant.class)) {
             return;
         }
@@ -141,6 +140,32 @@ public class Player extends Character {
         if(Greenfoot.isKeyDown("Q")) {
             merchant.setSelectedSlot(merchant.getSelectedSlot()-1);
         }
+        if(Greenfoot.isKeyDown("SPACE")) {
+            buyItem();
+        }
+    }
+    public void buyItem() {
+        if (!isTouching(Merchant.class)) {
+            return;
+        }
+        List<Merchant> merchants = currentWorld.getObjectsAt(getX(),getY(), Merchant.class);
+        Merchant merchant = merchants.get(0);
+        Item item = merchant.getCurrentItem();
+        if (item == null || getGold() < item.getValue()) {
+            //no item selected or not enough money
+            System.out.println("cannot buy");
+            return;
+        }
+        if(inventory[getSelectedSlot()]==null){
+            inventory[getSelectedSlot()]=item;
+        } else {
+            // slot not empty
+            Item objToAdd = inventory[getSelectedSlot()];
+            inventory[getSelectedSlot()] = item;
+            getWorld().addObject(objToAdd, getX(), getY());
+        }
+        setGold(getGold()-item.getValue()); //remove the money
+        merchant.buyItem(merchant.getSelectedSlot());  //one item per slot
     }
 
 }

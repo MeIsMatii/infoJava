@@ -2,7 +2,7 @@ import static java.lang.Math.min;
 
 public class Merchant extends Character{
     private Item[] shop;
-    private final InventoryVisualizer shopDisplay;
+    private InventoryVisualizer shopDisplay;
     private boolean isShopVisible = false;
 
     public Merchant(Item[] shop, int worldWidth) {
@@ -44,14 +44,24 @@ public class Merchant extends Character{
     }
     public void hideShop() {
         if(!isTouching(Player.class)) {
-            getWorld().removeObject(shopDisplay);
+            shopDisplay.removeInventory();
+            System.out.println("hide shop");
             isShopVisible = false;
         }
     }
     public void showShop() {
         if(isTouching(Player.class)) {
+            shopDisplay = new InventoryVisualizer(this.shop, this);
             getWorld().addObject(shopDisplay, 0, getWorld().getHeight() - 2);
+            System.out.println("show shop");
             isShopVisible = true;
         }
+    }
+    public void buyItem(int slot) {
+        shop[slot] = null;
+    }
+    //incase there is anything in the way of the shop inventory
+    public void checkCollision() {
+        
     }
 }
