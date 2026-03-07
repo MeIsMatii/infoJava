@@ -1,4 +1,4 @@
-import com.sun.media.jfxmedia.events.PlayerStateEvent;
+//import com.sun.media.jfxmedia.events.PlayerStateEvent;
 import greenfoot.*;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class Player extends MovingActor {
     private int currentSlot = 0;
 
 
- 
+
     //Konstruktoren
 
     //Methoden

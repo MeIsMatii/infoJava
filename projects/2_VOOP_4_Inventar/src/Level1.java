@@ -2,8 +2,8 @@ import greenfoot.World;
 
 /**
  * Write a description of class Level2 here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class Level1 extends World
@@ -29,6 +29,8 @@ public class Level1 extends World
      */
     private void prepare()
     {
+        //Apple apple = new Apple();
+        //addObject(apple,2,2);
         Carrot carrot = new Carrot(2);
         addObject(carrot,6,4);
         Carrot carrot2 = new Carrot(5);
