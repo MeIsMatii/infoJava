@@ -21,8 +21,8 @@ public class Level1 extends World
         addObject(player, 4, 4);
 
         prepare();
-
-
+        Foot foot = new Foot();
+        addObject(foot, 1,1);
         HotbarSelector hotbarSelector = new HotbarSelector();
     }
 

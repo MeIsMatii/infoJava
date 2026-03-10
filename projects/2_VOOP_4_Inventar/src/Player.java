@@ -64,6 +64,11 @@ public class Player extends Character {
         if (Greenfoot.isKeyDown("R")) {
             putSlot();
         }
+
+        if (Greenfoot.isKeyDown("P")) {
+            eat();
+        }
+
     }
     private void selectSlot() {
         String lastKey = Greenfoot.getKey();
@@ -79,11 +84,18 @@ public class Player extends Character {
         }
     }
 
-    private void pickSlot() {
-        List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
-        if(getSelectedSlot() > inventory.length) {
+    private void moveItem() {
+        if(!Greenfoot.isKeyDown("CONTROL")) {
             return;
         }
+        i.isNumeric
+    }
+
+    private void pickSlot() {
+        if(getSelectedSlot() > inventory.length || !isTouching(Item.class)) {
+            return;
+        }
+        List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
         if(!objs.isEmpty()){
             Item obj = objs.get(0);
             if(inventory[getSelectedSlot()]==null){
@@ -93,6 +105,7 @@ public class Player extends Character {
             }
             // slot not empty
             //putSlot();
+
             Item objToAdd = inventory[getSelectedSlot()];
             inventory[getSelectedSlot()]=obj;
             getWorld().removeObject(obj);
@@ -107,6 +120,16 @@ public class Player extends Character {
             Item objToAdd = inventory[getSelectedSlot()];
             inventory[getSelectedSlot()] = null;
             getWorld().addObject(objToAdd, getX(), getY());
+        }
+    }
+    private void eat() {
+        if(getSelectedSlot() > inventory.length) {
+            return;
+        }
+        if(inventory[getSelectedSlot()] != null) {
+            inventory[getSelectedSlot()] = null;
+            //if i had lives, i would heal, probably
+            //heal();
         }
     }
 
