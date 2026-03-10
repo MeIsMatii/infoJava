@@ -56,6 +56,7 @@ public class Player extends Character {
     public void act() {
         performMovement();
         selectSlot();
+        moveItem();
         interactMerchant();
         if (Greenfoot.isKeyDown("F")) {
             pickSlot();
@@ -85,10 +86,35 @@ public class Player extends Character {
     }
 
     private void moveItem() {
-        if(!Greenfoot.isKeyDown("CONTROL")) {
+        if(!Greenfoot.isKeyDown("CONTROL") || getSelectedSlot() > inventory.length) {
             return;
         }
-        i.isNumeric
+    
+        for(int i = 0; i < inventory.length+1; i++) {
+            if(Greenfoot.isKeyDown(String.valueOf(i))) {
+                if(i == 0) {
+                    if(inventory.length >= 10) {
+                        return;
+                    }
+                    int slot = 9;
+                    return;
+                }
+                int slot = i-1;
+                return;
+            }
+        }
+        if(inventory[slot] == null) {
+            return;
+        }
+        if(inventory[getSelectedSlot()] == null) {
+            inventory[getSelectedSlot()] = inventory[slot];
+            inventory[slot] = null;
+            return;
+        }
+        Item objToAdd = inventory[getSelectedSlot()];
+        inventory[getSelectedSlot()] = inventory[slot];
+        inventory[slot] = objToAdd;
+        
     }
 
     private void pickSlot() {
