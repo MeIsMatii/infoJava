@@ -71,7 +71,7 @@ public class Player extends Character {
         }
 
     }
-    private void selectSlot() {
+    public void selectSlot() {
         String lastKey = Greenfoot.getKey();
         for(int i = 0; i < inventory.length+1; i++) {
             if(lastKey != null  && lastKey.equals(String.valueOf(i))) {
@@ -85,7 +85,7 @@ public class Player extends Character {
         }
     }
 
-    private void moveItem() {
+    public void moveItem() {
         if(!Greenfoot.isKeyDown("CONTROL") || getSelectedSlot() > inventory.length || inventory[getSelectedSlot()] == null) {
             return;
         }
@@ -121,7 +121,7 @@ public class Player extends Character {
 
     }
 
-    private void pickSlot() {
+    public void pickSlot() {
         if(getSelectedSlot() > inventory.length || !isTouching(Item.class)) {
             return;
         }
@@ -142,7 +142,7 @@ public class Player extends Character {
             getWorld().addObject(objToAdd, getX(), getY());
         }
     }
-    private void putSlot() {
+    public void putSlot() {
         if(getSelectedSlot() > inventory.length) {
             return;
         }
@@ -152,7 +152,7 @@ public class Player extends Character {
             getWorld().addObject(objToAdd, getX(), getY());
         }
     }
-    private void eat() {
+    public void eat() {
         if(getSelectedSlot() > inventory.length) {
             return;
         }
