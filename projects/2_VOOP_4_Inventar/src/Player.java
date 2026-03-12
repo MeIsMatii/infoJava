@@ -86,24 +86,28 @@ public class Player extends Character {
     }
 
     private void moveItem() {
-        if(!Greenfoot.isKeyDown("CONTROL") || getSelectedSlot() > inventory.length) {
+        if(!Greenfoot.isKeyDown("CONTROL") || getSelectedSlot() > inventory.length || inventory[getSelectedSlot()] == null) {
             return;
         }
-    
+        int slot = 0;
+        boolean check = false;
         for(int i = 0; i < inventory.length+1; i++) {
             if(Greenfoot.isKeyDown(String.valueOf(i))) {
                 if(i == 0) {
-                    if(inventory.length >= 10) {
-                        return;
+                    if(inventory.length < 10) {
+                        break;
                     }
-                    int slot = 9;
-                    return;
+                    slot = 9;
+                    check = true;
+                    break;
                 }
-                int slot = i-1;
-                return;
+                check = true;
+                slot = i-1;
+                break;
             }
         }
-        if(inventory[slot] == null) {
+
+        if(!check) {
             return;
         }
         if(inventory[getSelectedSlot()] == null) {
@@ -114,7 +118,7 @@ public class Player extends Character {
         Item objToAdd = inventory[getSelectedSlot()];
         inventory[getSelectedSlot()] = inventory[slot];
         inventory[slot] = objToAdd;
-        
+
     }
 
     private void pickSlot() {
