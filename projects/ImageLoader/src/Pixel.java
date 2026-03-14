@@ -11,7 +11,6 @@ public class Pixel extends ImprovedActor {
 
     public void setImage(Color newColor) {
         if(newColor.equals(this.color)) {
-            System.out.println("meowmeow");
             return;
         }
         if(newColor.getAlpha() == 0) {

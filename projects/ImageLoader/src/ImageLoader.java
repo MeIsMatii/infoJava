@@ -13,7 +13,6 @@ public class ImageLoader extends ImprovedActor {
 
     public ImageLoader(GreenfootImage img) {
         this.img = img;
-
         pixels = new Pixel[this.img.getHeight()][this.img.getWidth()];
     }
 
