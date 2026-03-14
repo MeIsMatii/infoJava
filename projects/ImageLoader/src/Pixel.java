@@ -1,16 +1,23 @@
-import greenfoot.*;
 
-import java.awt.image.BufferedImage;
+import greenfoot.Color;
 
-public class Pixel extends ImprovedActor{
-    //private World world = getWorld();
-    private final int rgb;
-    private final BufferedImage img = new BufferedImage(1,1, BufferedImage.TYPE_INT_ARGB);
-    public Pixel(int rgb) {
-        this.rgb = rgb;
+
+public class Pixel extends ImprovedActor {
+    private Color color;
+    private final ImprovedGreenfootImage img;
+
+    public Pixel(int cellSize) {
+        this.img = new ImprovedGreenfootImage(cellSize, cellSize);
     }
-    public void setImage() {
-        //super.setImage(image);
-        this.img.setRGB(0, 0, rgb);
+
+    public void setImage(Color newColor) {
+        if(newColor == this.color) {
+            return;
+        }
+        this.img.setColor(newColor);
+        this.img.fill();
+        super.setImage(img);
+
+        this.color = newColor;
     }
 }
