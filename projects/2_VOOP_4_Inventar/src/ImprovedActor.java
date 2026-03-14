@@ -12,6 +12,7 @@ public class ImprovedActor extends Actor {
     public void setImage(GreenfootImage image){
         currentImage = image;
         super.setImage(new ImprovedGreenfootImage(image));
+
     }
 
 

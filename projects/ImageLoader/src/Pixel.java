@@ -1,4 +1,3 @@
-
 import greenfoot.Color;
 
 
@@ -11,8 +10,12 @@ public class Pixel extends ImprovedActor {
     }
 
     public void setImage(Color newColor) {
-        if(newColor == this.color) {
+        if(newColor.equals(this.color)) {
+            System.out.println("meowmeow");
             return;
+        }
+        if(newColor.getAlpha() == 0) {
+            newColor = Color.BLACK;
         }
         this.img.setColor(newColor);
         this.img.fill();

@@ -1,6 +1,8 @@
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
+import java.util.Timer;
+
 /**
  * Write a description of class Level1 here.
  *
@@ -11,19 +13,16 @@ public class Level1 extends World
 {
     //load the image
     private static int CELL_SIZE = 1;
-    private static GreenfootImage gImg1 = new GreenfootImage("generate/vanquish.png");
-    private static GreenfootImage gImg2 = new GreenfootImage("generate/alcremeow.png");
-    private static GreenfootImage gImg3 = new GreenfootImage("generate/febfeb.png");
 
-    private static GreenfootImage[] mov = new GreenfootImage[]{gImg1,gImg2, gImg3};
-    static int width = Math.max(Math.max(gImg1.getWidth(),gImg2.getWidth()),gImg3.getWidth());
-    static int height = Math.max(Math.max(gImg1.getHeight(),gImg2.getHeight()),gImg3.getHeight());
+    private static GreenfootImage[] frames = new GreenfootImage[frameAmount];
+    static int width = 1920;
+    static int height = 1080;
 
     public Level1(){
         super(width,height, CELL_SIZE);
         setPaintOrder(Pixel.class, ImageLoader.class);
         //ImageLoader image = new ImageLoader(gImg);
-        VideoLoader video = new VideoLoader(mov,1);
+        VideoLoader video = new VideoLoader(frames,1);
         addObject(video, 0,0);
     }
 

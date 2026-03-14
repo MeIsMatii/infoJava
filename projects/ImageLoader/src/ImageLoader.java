@@ -3,6 +3,8 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
+import java.util.List;
+
 
 public class ImageLoader extends ImprovedActor {
     private final GreenfootImage img;
