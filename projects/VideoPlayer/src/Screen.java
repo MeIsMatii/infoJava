@@ -2,20 +2,22 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 /**
- * Write a description of class VideoPlayer here.
+ * Write a description of class Screen here.
  *
  * @author Mati
  * @version (a version number or a date)
  */
-public class VideoPlayer extends World
+public class Screen extends World
 {
     //load the image
 
 
-    private static final int CELL_SIZE = 60;
+    private static final int CELL_SIZE = 1;
     //video
-    public VideoPlayer(int WIDTH, int HEIGHT, int FRAME_AMOUNT, String PATH){
+    public Screen(int WIDTH, int HEIGHT, int FRAME_AMOUNT, String PATH){
         super(WIDTH, HEIGHT, CELL_SIZE);
+        System.out.println("loaded Screen");
+
         setPaintOrder(Pixel.class, ImageLoader.class);
 
 
@@ -29,11 +31,13 @@ public class VideoPlayer extends World
                 frames[i] = new GreenfootImage(PATH + "out_" + (i+1) + ".png");
             }
         }
+        System.out.printf("preloaded vid with %d frames\n", frames.length);
+
         VideoLoader video = new VideoLoader(frames,1);
         addObject(video, 0,0);
     }
 
-    public VideoPlayer(int WIDTH, int HEIGHT, int FRAME_AMOUNT, String PATH, String FILENAME){
+    public Screen(int WIDTH, int HEIGHT, int FRAME_AMOUNT, String PATH, String FILENAME){
         super(WIDTH, HEIGHT, CELL_SIZE);
         setPaintOrder(Pixel.class, ImageLoader.class);
 

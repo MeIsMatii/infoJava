@@ -14,6 +14,8 @@ public class ImageLoader extends ImprovedActor {
     public ImageLoader(GreenfootImage img) {
         this.img = img;
         pixels = new Pixel[this.img.getHeight()][this.img.getWidth()];
+        System.out.println("created black image");
+
     }
 
 
@@ -30,6 +32,8 @@ public class ImageLoader extends ImprovedActor {
                 pixels[y][x] = pixel;
             }
         }
+        System.out.println("added img loader to world");
+
     }
 
     public void loadImage(GreenfootImage newImg) {
@@ -39,7 +43,6 @@ public class ImageLoader extends ImprovedActor {
                 pixels[y][x].setImage(color);
             }
         }
-        System.out.println("loaded new image");
     }
 
     public void removeImage() {

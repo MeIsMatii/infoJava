@@ -2,58 +2,59 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
-import java.util.logging.Level;
-
-public class PrepareVideo extends World {
+public class Prepare extends World {
     int FRAME_AMOUNT;
     String PATH;
     int WIDTH;
     int HEIGHT;
     String FILENAME;
 
-    World videoPlayer;
+    World screen;
 
 
-    public PrepareVideo() {
+    public Prepare() {
         super(1,1,1);
-        String config = "image"; //change this manually lmao
+        String config = "neverGonna"; //change this manually lmao
         switch (config) {
             case "badApple":
                 badApple();
-                videoPlayer = new VideoPlayer(WIDTH,HEIGHT,FRAME_AMOUNT,PATH);
+                screen = new Screen(WIDTH,HEIGHT,FRAME_AMOUNT,PATH);
                 break;
             case "neverGonna":
                 neverGonna();
-                videoPlayer = new VideoPlayer(WIDTH,HEIGHT,FRAME_AMOUNT,PATH);
+                screen = new Screen(WIDTH,HEIGHT,FRAME_AMOUNT,PATH);
                 break;
             case "image":
                 image("test.png");
-                videoPlayer = new VideoPlayer(WIDTH,HEIGHT,FRAME_AMOUNT,PATH,FILENAME);
+                screen = new Screen(WIDTH,HEIGHT,FRAME_AMOUNT,PATH,FILENAME);
                 break;
         }
         System.out.println("prepared video");
-        Greenfoot.setWorld(videoPlayer);
-
+        Greenfoot.setWorld(screen);
     }
 
     public void badApple() {
+        System.out.println("ba");
         FRAME_AMOUNT = 2629;
         PATH = "generate/bad_apple/";
-        GreenfootImage frame1 = new GreenfootImage(PATH + "/out_001.png");
+        GreenfootImage frame1 = new GreenfootImage(PATH + "out_001.png");
         WIDTH = frame1.getWidth();
         HEIGHT = frame1.getHeight();
+
     }
 
     public void neverGonna() {
+        System.out.println("rick");
         FRAME_AMOUNT = 100;
         PATH = "generate/never_gonna/";
-        GreenfootImage frame1 = new GreenfootImage(PATH + "/out_001.png");
+        GreenfootImage frame1 = new GreenfootImage(PATH + "out_001.png");
         WIDTH = frame1.getWidth();
         HEIGHT = frame1.getHeight();
 
     }
 
     public void image(String filename) {
+        System.out.println("img");
         this.FRAME_AMOUNT = 1;
         this.PATH = "generate/";
         this.FILENAME = filename;

@@ -17,6 +17,8 @@ public class VideoLoader extends ImprovedActor{
     @Override
     protected void addedToWorld(greenfoot.World world) {
         world.addObject(imageLoader, getX(), getY());
+        System.out.println("added videoloader to world");
+
     }
 
     public void act() {
