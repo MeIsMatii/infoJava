@@ -10,21 +10,35 @@ import greenfoot.World;
 public class Level1 extends World
 {
     //load the image
-    private static int CELL_SIZE = 1;
 
-    private static GreenfootImage[] frames = new GreenfootImage[191]; //it has 191 frames
-    static int width = 1920;
-    static int height = 1080;
+    //bad apple config
 
+    private static final int FRAME_AMOUNT = 2629; //I am lazy and don't want to make a counter
+    private static final String PATH = "generate/bad_apple/"; // u gotta change this too
+    static int WIDTH = 480;
+    static int HEIGHT = 360;
+
+
+    //other config
+    /*
+    private static final int FRAME_AMOUNT = 100; //I am lazy and don't want to make a counter
+    private static final String PATH = "generate/never_gonna/"; // u gotta change this too
+    static int WIDTH = 1280;
+    static int HEIGHT = 720;
+    */
+
+
+    private static final GreenfootImage[] frames = new GreenfootImage[FRAME_AMOUNT];
+    private static final int CELL_SIZE = 1;
     public Level1(){
-        super(width,height, CELL_SIZE);
+        super(WIDTH, HEIGHT, CELL_SIZE);
         for (int i = 0; i < frames.length; i++) {
             if(i+1<10) {
-                frames[i] = new GreenfootImage("generate/bad_apple/out_00" + (i +1) + ".png");
+                frames[i] = new GreenfootImage(PATH + "out_00" + (i +1) + ".png");
             } else if (i+1 < 100) {
-                frames[i] = new GreenfootImage("generate/bad_apple/out_0" + (i+1)+ ".png");
+                frames[i] = new GreenfootImage(PATH + "out_0" + (i+1)+ ".png");
             } else {
-                frames[i] = new GreenfootImage("generate/bad_apple/out_" + (i+1) + ".png");
+                frames[i] = new GreenfootImage(PATH + "out_" + (i+1) + ".png");
             }
 
         }
