@@ -10,4 +10,4 @@ class.Rock.image=rock.gif
 class.Star.image=Stern2.png
 project.charset=windows-1252
 simulation.speed=30
-world.lastInstantiated=Level1
+world.lastInstantiated=PrepareVideo
