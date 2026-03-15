@@ -13,10 +13,12 @@ public class Screen extends World
 
 
     private static final int CELL_SIZE = 1;
+
     //video
     public Screen(int WIDTH, int HEIGHT, int FRAME_AMOUNT, String PATH){
         super(WIDTH, HEIGHT, CELL_SIZE);
         System.out.println("loaded Screen");
+        System.out.printf("the cell size is currently set to %d. if you are getting an out of memory error, try lowering this\n", CELL_SIZE);
 
         setPaintOrder(Pixel.class, ImageLoader.class);
 
