@@ -6,6 +6,7 @@ public class Item extends Object
 {
     private int value = 15;
 
+
     public int getValue() {
         return value;
     }

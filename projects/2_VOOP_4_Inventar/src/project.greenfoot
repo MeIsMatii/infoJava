@@ -4,6 +4,9 @@ class.Apple.image=apple1.png
 #potions
 class.Potion.image=potion.png
 class.HealPotion.image=heal_potion.png
+
+class.TeleportScroll.image = bus_01.png
+class.Lever.image = Lever_off.png
 class.InventorySlot.image=EmptySlot.png
 class.HotbarSelector.image=hotbar_selector.png
 class.MovingActor.image=Player.png

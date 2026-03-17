@@ -42,6 +42,10 @@ public class Level1 extends World
         addObject(carrot,6,4);
         HealPotion healpotion = new HealPotion(1, 30);
         addObject(healpotion,6,4);
+        Lever lever = new Lever();
+        addObject(lever, 5,5);
+        TeleportScroll tpScroll = new TeleportScroll();
+        addObject(tpScroll, 2,2);
         Carrot carrot2 = new Carrot(5);
         addObject(carrot2,3,3);
         Carrot carrot3 = new Carrot(7);
