@@ -1,9 +1,17 @@
 public class HealPotion extends Potion{
-    public Item onPick(Character trigger) {
-        Item thisItem = super.onPick(trigger);
-        if(thisItem != null) {
-            trigger.heal(30);
+    private final int healAmount;
+    public HealPotion(int uses, int healAmount) {
+        super(uses);
+        this.healAmount = healAmount;
+    }
+
+    public Item onUse(Character trigger) {
+        trigger.heal(healAmount);
+
+        setUses(getUses()-1);
+        if(getUses()<=0) {
+            return null;
         }
-        return thisItem;
+        return this; //1 use
     }
 }

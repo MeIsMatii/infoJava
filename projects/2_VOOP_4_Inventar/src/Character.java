@@ -4,6 +4,11 @@ public class Character extends MovingActor{
     private int selectedSlot = 0;
     private int life;
 
+    public Character(int life) {
+        this.life = life;
+    }
+
+
     public int getLife() {
         return life;
     }
@@ -32,6 +37,16 @@ public class Character extends MovingActor{
         hit(-life);
         List<Star> stars = getWorld().getObjectsAt(getX(),getY(),Star.class);
         getWorld().removeObject(stars.get(0)); //remove the hit marker
+    }
+
+    public void die() {
+        getWorld().removeObject(this);
+    }
+
+    public void act() {
+        if(life<=0) {
+            die();
+        }
     }
 
 }

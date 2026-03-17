@@ -36,17 +36,20 @@ public class Level1 extends World
         //addObject(apple,2,2);
         Item[] merchantShop = new Item[]{new Carrot(3), new Carrot(54), new Apple(), null};
         //Item[] merchantShop = new Item[3];
-        Merchant merchant = new Merchant(merchantShop, getWidth());
+        Merchant merchant = new Merchant(merchantShop, getWidth(), 50);
         addObject(merchant,0,0);
         Carrot carrot = new Carrot(2);
         addObject(carrot,6,4);
-        Potion potion = new Potion();
-        addObject(potion,6,4);
+        HealPotion healpotion = new HealPotion(1, 30);
+        addObject(healpotion,6,4);
         Carrot carrot2 = new Carrot(5);
         addObject(carrot2,3,3);
         Carrot carrot3 = new Carrot(7);
         addObject(carrot3,2,6);
         Rock rock = new Rock();
         addObject(rock, 4, 5);
+
+        Trap trap = new Trap(20);
+        addObject(trap,5,2);
     }
 }

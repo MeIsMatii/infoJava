@@ -18,11 +18,14 @@ public class Player extends Character {
     //Konstruktoren
     //default
     public Player() {
+        super(100);
         this.inventory = new Item[8];
         this.gold = 0;
+
     }
 
-    public Player(int invSize, int gold) {
+    public Player(int invSize, int gold, int life) {
+        super(life);
         this.inventory = new Item[invSize];
         this.gold = gold;
     }
@@ -66,8 +69,13 @@ public class Player extends Character {
             putSlot();
         }
 
-        if (Greenfoot.isKeyDown("P")) {
-            eat();
+        if (Greenfoot.isKeyDown("U")) {
+            useItem();
+            System.out.println("heal");
+        }
+
+        if(Greenfoot.isKeyDown("F1")) {
+            debug();
         }
 
     }
@@ -150,16 +158,15 @@ public class Player extends Character {
             objToAdd.put(getX(),getY(), getWorld());
         }
     }
-    public void eat() {
+    public void useItem() {
         if(getSelectedSlot() > inventory.length) {
             return;
         }
         if(inventory[getSelectedSlot()] != null) {
-            inventory[getSelectedSlot()] = null;
-            //if i had lives, i would heal, probably
-            //heal();
+            inventory[getSelectedSlot()] = inventory[getSelectedSlot()].onUse(this);
         }
     }
+
 
     /**
      * W - A - S - D movement
@@ -232,7 +239,11 @@ public class Player extends Character {
         setGold(getGold() + inventory[getSelectedSlot()].getValue());
         inventory[getSelectedSlot()] = null;
     }
-    public void die() {
-        getWorld().removeObject(this);
+
+
+
+    public void debug() {
+        System.out.printf("Life: %d \n", getLife());
+        System.out.printf("Gold: %d \n", getGold());
     }
 }

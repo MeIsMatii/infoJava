@@ -18,6 +18,10 @@ public class Item extends Object
         getWorld().removeObject(this);
         return this;
     }
+
+    public Item onUse(Character trigger) {
+        return this;
+    }
     public void put(int x, int y, World world) {
         world.addObject(this, x,y);
     }

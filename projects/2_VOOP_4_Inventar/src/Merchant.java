@@ -6,7 +6,8 @@ public class Merchant extends Character{
     private InventoryVisualizer shopDisplay;
     private boolean isShopVisible = false;
 
-    public Merchant(Item[] shop, int worldWidth) {
+    public Merchant(Item[] shop, int worldWidth, int life) {
+        super(life);
         int finalSize = Math.min(shop.length, worldWidth);
         this.shop = new Item[finalSize];
 

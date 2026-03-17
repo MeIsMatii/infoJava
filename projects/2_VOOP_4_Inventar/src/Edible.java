@@ -10,4 +10,9 @@ public class Edible extends Item{
     public int getWeight() {
         return weight;
     }
+
+    public Item onUse(Character trigger) {
+        trigger.heal(weight);
+        return null;
+    }
 }
