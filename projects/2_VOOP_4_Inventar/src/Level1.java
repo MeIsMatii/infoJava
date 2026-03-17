@@ -40,6 +40,8 @@ public class Level1 extends World
         addObject(merchant,0,0);
         Carrot carrot = new Carrot(2);
         addObject(carrot,6,4);
+        Potion potion = new Potion();
+        addObject(potion,6,4);
         Carrot carrot2 = new Carrot(5);
         addObject(carrot2,3,3);
         Carrot carrot3 = new Carrot(7);

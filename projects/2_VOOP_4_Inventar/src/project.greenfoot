@@ -1,6 +1,7 @@
 #Greenfoot project file
 class.Carrot.image=karotte.png
 class.Apple.image=apple1.png
+class.Potion.image=potion.png
 class.InventorySlot.image=EmptySlot.png
 class.HotbarSelector.image=hotbar_selector.png
 class.MovingActor.image=Player.png

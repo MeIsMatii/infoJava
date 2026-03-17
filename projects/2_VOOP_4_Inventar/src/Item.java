@@ -2,7 +2,7 @@ import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
-public class Item extends ImprovedActor
+public class Item extends Object
 {
     private int value = 15;
 
@@ -12,6 +12,14 @@ public class Item extends ImprovedActor
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public Item onPick(Character trigger) {
+        getWorld().removeObject(this);
+        return this;
+    }
+    public void put(int x, int y, World world) {
+        world.addObject(this, x,y);
     }
 
 }

@@ -129,17 +129,15 @@ public class Player extends Character {
         if(!objs.isEmpty()){
             Item obj = objs.get(0);
             if(inventory[getSelectedSlot()]==null){
-                inventory[getSelectedSlot()]=obj;
-                getWorld().removeObject(obj);
+                inventory[getSelectedSlot()]=obj.onPick(this);;
                 return;  //beendet die gesamte Methode
             }
             // slot not empty
             //putSlot();
 
             Item objToAdd = inventory[getSelectedSlot()];
-            inventory[getSelectedSlot()]=obj;
-            getWorld().removeObject(obj);
-            getWorld().addObject(objToAdd, getX(), getY());
+            inventory[getSelectedSlot()]=obj.onPick(this);;
+            objToAdd.put(getX(),getY(), getWorld());
         }
     }
     public void putSlot() {
@@ -149,7 +147,7 @@ public class Player extends Character {
         if(inventory[getSelectedSlot()] != null) {
             Item objToAdd = inventory[getSelectedSlot()];
             inventory[getSelectedSlot()] = null;
-            getWorld().addObject(objToAdd, getX(), getY());
+            objToAdd.put(getX(),getY(), getWorld());
         }
     }
     public void eat() {
@@ -233,5 +231,8 @@ public class Player extends Character {
         }
         setGold(getGold() + inventory[getSelectedSlot()].getValue());
         inventory[getSelectedSlot()] = null;
+    }
+    public void die() {
+        getWorld().removeObject(this);
     }
 }
