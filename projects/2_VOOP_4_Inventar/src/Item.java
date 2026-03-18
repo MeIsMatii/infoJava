@@ -1,5 +1,3 @@
-import greenfoot.Actor;
-import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 public class Item extends Object
@@ -15,7 +13,7 @@ public class Item extends Object
         this.value = value;
     }
 
-    public Item onPick(Character trigger) {
+    public Object onInteract(Character trigger) {
         getWorld().removeObject(this);
         return this;
     }

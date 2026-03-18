@@ -16,7 +16,7 @@ public class Trap extends Item {
         setImage(items.get(randNum).getImage());
     }
 
-    public Item onPick(Character trigger) {
+    public Object onInteract(Character trigger) {
         // hit characters inside radius of 1
         List<Character> neighbours = getNeighbours(1, true, Character.class);
         for (Character character : neighbours) {
@@ -42,7 +42,7 @@ public class Trap extends Item {
                 getWorld().addObject(new Star(), getX() + x, getY() + y);
             }
         }
-        super.onPick(trigger);
+        super.onInteract(trigger);
         return null;
     }
 }

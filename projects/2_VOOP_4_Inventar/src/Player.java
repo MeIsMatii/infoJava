@@ -62,8 +62,8 @@ public class Player extends Character {
         moveItem();
         interactMerchant();
         if (Greenfoot.isKeyDown("F")) {
-            System.out.println("pickItem");
-            pickItem();
+            System.out.println("interact");
+            interact();
         }
 
         if (Greenfoot.isKeyDown("R")) {
@@ -131,26 +131,26 @@ public class Player extends Character {
 
     }
 
-    public void pickItem() {
-        if(getSelectedSlot() > inventory.length || !isTouching(Item.class)) {
+    public void interact() {
+        if(getSelectedSlot() > inventory.length || !isTouching(Object.class)) {
             return;
         }
-        List<Item> objs = getWorld().getObjectsAt(getX(), getY(), Item.class);
+        List<Object> objs = getWorld().getObjectsAt(getX(), getY(), Object.class);
         if(!objs.isEmpty()){
-            Item obj = objs.get(0);
-            Item pickedObj = obj.onPick(this);;
+            Object obj = objs.get(0);
+            Object pickedObj = obj.onInteract(this);;
             if(pickedObj == null) {
                 return;
             }
             if(inventory[getSelectedSlot()]==null){
-                inventory[getSelectedSlot()]=pickedObj;
+                inventory[getSelectedSlot()]= (Item) pickedObj; //pickedObj has to be an item bc it is not null
                 return;  //beendet die gesamte Methode
             }
             // slot not empty
             //putSlot();
 
             Item objToAdd = inventory[getSelectedSlot()];
-            inventory[getSelectedSlot()]=pickedObj;
+            inventory[getSelectedSlot()]= (Item) pickedObj;
             objToAdd.put(getX(),getY(), getWorld());
         }
     }

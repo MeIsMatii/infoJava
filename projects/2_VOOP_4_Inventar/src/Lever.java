@@ -1,8 +1,8 @@
-public class Lever extends Item{
+public class Lever extends Object{
     private boolean isLeverActivated = false;
 
 
-    public Item onPick(Character trigger) {
+    public Item onInteract(Character trigger) {
         isLeverActivated = !isLeverActivated;
         setState();
 

@@ -1,4 +1,3 @@
-import greenfoot.Actor;
 import greenfoot.Greenfoot;
 
 public class Potion extends Item{
@@ -6,10 +5,10 @@ public class Potion extends Item{
     public Potion(int uses) {
         this.uses = uses;
     }
-    public Item onPick(Character trigger) {
+    public Object onInteract(Character trigger) {
         int number = Greenfoot.getRandomNumber(100);
         Item thisItem = this;
-        super.onPick(trigger);
+        super.onInteract(trigger);
         if(number < 5) {
             return null; //break
         }
