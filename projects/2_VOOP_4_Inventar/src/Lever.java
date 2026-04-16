@@ -1,14 +1,13 @@
-public class Lever extends Object{
+public class Lever extends ImprovedActor implements UsableItem{
     private boolean isLeverActivated = false;
 
 
-    public Item onInteract(Character trigger) {
+    public void onUse(Character trigger) {
         isLeverActivated = !isLeverActivated;
         setState();
 
         //do something with the input ig
 
-        return null;
     }
     public void setState() {
         if(isLeverActivated) {

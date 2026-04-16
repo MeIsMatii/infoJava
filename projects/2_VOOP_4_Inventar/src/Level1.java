@@ -52,6 +52,8 @@ public class Level1 extends World
         addObject(carrot3,2,6);
         Rock rock = new Rock();
         addObject(rock, 4, 5);
+        Castle castle = new Castle(3,3);
+        addObject(castle, 4, 5);
 
         Trap trap = new Trap(20);
         addObject(trap,5,2);

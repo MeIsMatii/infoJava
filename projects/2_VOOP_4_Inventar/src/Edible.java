@@ -1,4 +1,4 @@
-public class Edible extends Item{
+public class Edible extends Item implements PickableItem{
     private final int weight;
 
     public Edible(int weight){

@@ -12,6 +12,7 @@ public class Player extends Character {
     //Attribute
     //TODO: 1) Attribut vom Typ InventoryVisualizer deklarieren mit dem Namen vizualizer
     private final Item[] inventory;
+    private Item currentItem;
     private int gold;
     private World currentWorld;
 
@@ -79,7 +80,7 @@ public class Player extends Character {
         if(Greenfoot.isKeyDown("F1")) {
             debug();
         }
-
+        this.currentItem = inventory[getSelectedSlot()];
     }
     public void selectSlot() {
         String lastKey = Greenfoot.getKey();
@@ -96,7 +97,7 @@ public class Player extends Character {
     }
 
     public void moveItem() {
-        if(!Greenfoot.isKeyDown("CONTROL") || getSelectedSlot() > inventory.length || inventory[getSelectedSlot()] == null) {
+        if(!Greenfoot.isKeyDown("CONTROL") || getSelectedSlot() > inventory.length || currentItem   == null) {
             return;
         }
         int slot = 0;
@@ -120,37 +121,36 @@ public class Player extends Character {
         if(!check) {
             return;
         }
-        if(inventory[getSelectedSlot()] == null) {
+        if(currentItem  == null) {
             inventory[getSelectedSlot()] = inventory[slot];
             inventory[slot] = null;
             return;
         }
-        Item objToAdd = inventory[getSelectedSlot()];
+        Item objToAdd = currentItem;
         inventory[getSelectedSlot()] = inventory[slot];
         inventory[slot] = objToAdd;
 
     }
-
     public void interact() {
-        if(getSelectedSlot() > inventory.length || !isTouching(Object.class)) {
+        if(getSelectedSlot() > inventory.length || !isTouching(PickableItem.class)) {
             return;
         }
-        List<Object> objs = getWorld().getObjectsAt(getX(), getY(), Object.class);
+        List<PickableItem> objs = getWorld().getObjectsAt(getX(), getY(), PickableItem.class);
         if(!objs.isEmpty()){
-            Object obj = objs.get(0);
-            Object pickedObj = obj.onInteract(this);;
+            PickableItem obj = objs.get(0);
+            PickableItem pickedObj = obj.onPick(this);;
             if(pickedObj == null) {
                 return;
             }
-            if(inventory[getSelectedSlot()]==null){
-                inventory[getSelectedSlot()]= (Item) pickedObj; //pickedObj has to be an item bc it is not null
+            if(currentItem ==null){
+                inventory[getSelectedSlot()] = pickedObj; //pickedObj has to be an item bc it is not null
                 return;  //beendet die gesamte Methode
             }
             // slot not empty
             //putSlot();
 
-            Item objToAdd = inventory[getSelectedSlot()];
-            inventory[getSelectedSlot()]= (Item) pickedObj;
+            PickableItem objToAdd = (PickableItem) currentItem;
+            inventory[getSelectedSlot()] = pickedObj;
             objToAdd.put(getX(),getY(), getWorld());
         }
     }
@@ -158,19 +158,18 @@ public class Player extends Character {
         if(getSelectedSlot() > inventory.length) {
             return;
         }
-        if(inventory[getSelectedSlot()] != null) {
-            Item objToAdd = inventory[getSelectedSlot()];
+        if(currentItem  != null) {
+            PickableItem objToAdd = (PickableItem) currentItem;
             inventory[getSelectedSlot()] = null;
             objToAdd.put(getX(),getY(), getWorld());
         }
     }
     public void useItem() {
-        if(getSelectedSlot() > inventory.length) {
-            return;
+        List<UsableItem> items = getWorld().getObjectsAt(getX(),getY(), UsableItem.class);
+        if(items.isEmpty()) {
+           return;
         }
-        if(inventory[getSelectedSlot()] != null) {
-            inventory[getSelectedSlot()] = inventory[getSelectedSlot()].onUse(this);
-        }
+        items.get(0).onUse(this);
     }
 
 
@@ -227,22 +226,22 @@ public class Player extends Character {
             System.out.println("cannot buy");
             return;
         }
-        if(inventory[getSelectedSlot()]==null){
-            inventory[getSelectedSlot()]=item;
+        if(currentItem ==null){
+            inventory[getSelectedSlot()] = item;
         } else {
             // slot not empty
-            Item objToAdd = inventory[getSelectedSlot()];
+            Item objToAdd = currentItem;
             inventory[getSelectedSlot()] = item;
-            getWorld().addObject(objToAdd, getX(), getY());
+            getWorld().addObject((Actor) objToAdd, getX(), getY());
         }
         setGold(getGold()-item.getValue()); //remove the money
         merchant.buyItem(merchant.getSelectedSlot());  //one item per slot
     }
     public void sellItem() {
-        if (!isTouching(Merchant.class) || inventory[getSelectedSlot()] == null) {
+        if (!isTouching(Merchant.class) || currentItem  == null) {
             return;
         }
-        setGold(getGold() + inventory[getSelectedSlot()].getValue());
+        setGold(getGold() + currentItem.getValue());
         inventory[getSelectedSlot()] = null;
     }
 
@@ -251,5 +250,6 @@ public class Player extends Character {
     public void debug() {
         System.out.printf("Life: %d \n", getLife());
         System.out.printf("Gold: %d \n", getGold());
+        System.out.printf("HeldItem: %s \n", currentItem);
     }
 }

@@ -14,7 +14,7 @@ public class Merchant extends Character{
         for (int i = 0; i < finalSize; i++) {
             this.shop[i] = shop[i];
         }
-        shopDisplay = new InventoryVisualizer(this.shop, this);
+        shopDisplay = new InventoryVisualizer((Actor[]) this.shop, this);
     }
 
 
@@ -56,7 +56,7 @@ public class Merchant extends Character{
     }
     public void showShop() {
         if(isTouching(Player.class)) {
-            shopDisplay = new InventoryVisualizer(this.shop, this);
+            shopDisplay = new InventoryVisualizer((Actor[]) this.shop, this);
             getWorld().addObject(shopDisplay, 0, getWorld().getHeight() - 2);
             for(int i = 0; i<shop.length;i++) {
                 if(shop[i] == null) {

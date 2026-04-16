@@ -2,7 +2,7 @@ import greenfoot.*;
 
 import java.util.List;
 
-public class Trap extends Item {
+public class Trap extends Item implements PickableItem{
     private final int damage;
 
     public Trap(int damage) {
@@ -16,19 +16,18 @@ public class Trap extends Item {
         setImage(items.get(randNum).getImage());
     }
 
-    public Object onInteract(Character trigger) {
+    public Item onPick(Character trigger) {
         // hit characters inside radius of 1
-        List<Character> neighbours = getNeighbours(1, true, Character.class);
-        for (Character character : neighbours) {
-            //cannot test this rn, hopefully it works
+        List<Character> neighbours = getObjectsInRange(1, Character.class);
+        for (Character character: neighbours) {
             character.hit(this.damage);
         }
 
-        //hit characters on spot
-        List<Character> characters = getWorld().getObjectsAt(getX(),getY(),Character.class);
-        for (Character character : characters) {
+        for (int i = 0; i < neighbours.size(); i++) {
+            Character character = neighbours.get(i);
             character.hit(this.damage);
         }
+
 
 
         for (int y = -1; y < 2; y++) {
@@ -42,7 +41,13 @@ public class Trap extends Item {
                 getWorld().addObject(new Star(), getX() + x, getY() + y);
             }
         }
-        super.onInteract(trigger);
+        PickableItem.super.onPick(trigger);
         return null;
     }
+
+    @Override
+    public void put() {
+        return;
+    }
+
 }

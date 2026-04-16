@@ -1,7 +1,6 @@
 import greenfoot.World;
 
-public class Item extends Object
-{
+public class Item extends ImprovedActor{
     private int value = 15;
 
 
@@ -12,17 +11,4 @@ public class Item extends Object
     public void setValue(int value) {
         this.value = value;
     }
-
-    public Object onInteract(Character trigger) {
-        getWorld().removeObject(this);
-        return this;
-    }
-
-    public Item onUse(Character trigger) {
-        return this;
-    }
-    public void put(int x, int y, World world) {
-        world.addObject(this, x,y);
-    }
-
 }
