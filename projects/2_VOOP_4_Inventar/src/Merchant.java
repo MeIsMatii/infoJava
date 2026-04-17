@@ -2,23 +2,24 @@ import greenfoot.*;
 import java.util.List;
 
 public class Merchant extends Character{
-    private Item[] shop;
+    private PickableItem[] shop;
+    private Actor[] actorInv;
     private InventoryVisualizer shopDisplay;
     private boolean isShopVisible = false;
 
-    public Merchant(Item[] shop, int worldWidth, int life) {
+    public Merchant(PickableItem[] shop, int worldWidth, int life) {
         super(life);
         int finalSize = Math.min(shop.length, worldWidth);
-        this.shop = new Item[finalSize];
-
+        this.shop = new PickableItem[finalSize];
+        this.actorInv = new Actor[this.shop.length];
         for (int i = 0; i < finalSize; i++) {
             this.shop[i] = shop[i];
         }
-        shopDisplay = new InventoryVisualizer((Actor[]) this.shop, this);
+        shopDisplay = new InventoryVisualizer(actorInv, this);
     }
 
 
-    public Item getCurrentItem() {
+    public PickableItem getCurrentItem() {
         return this.shop[getSelectedSlot()];
     }
 
@@ -28,12 +29,21 @@ public class Merchant extends Character{
     }
 
     public void act() {
+        invUpdate();
         wrapSlot();
         if(isShopVisible()) {
             hideShop();
         } else {
             showShop();
         }
+    }
+    public Actor[] invUpdate() {
+        for (int i = 0; i < this.shop.length; i++) {
+            PickableItem item = this.shop[i];
+            Actor itemActor = (Actor) item;
+            actorInv[i] = itemActor;
+        }
+        return actorInv;
     }
 
     public void wrapSlot() {
@@ -49,6 +59,7 @@ public class Merchant extends Character{
             shopDisplay.removeInventory();
             for(int i = 0; i<shop.length;i++) {
                 getWorld().showText("", i, getWorld().getHeight() -2); //replace with empty string to rm old text
+
             }
             System.out.println("hide shop");
             isShopVisible = false;
@@ -56,7 +67,7 @@ public class Merchant extends Character{
     }
     public void showShop() {
         if(isTouching(Player.class)) {
-            shopDisplay = new InventoryVisualizer((Actor[]) this.shop, this);
+            shopDisplay = new InventoryVisualizer(this.actorInv, this);
             getWorld().addObject(shopDisplay, 0, getWorld().getHeight() - 2);
             for(int i = 0; i<shop.length;i++) {
                 if(shop[i] == null) {

@@ -1,6 +1,6 @@
 import greenfoot.World;
 
-public class TeleportScroll extends Item implements PickableItem{
+public class TeleportScroll extends Item implements PickableItem, UsableItem{
     private int teleportX;
     private int teleportY;
 
@@ -9,15 +9,15 @@ public class TeleportScroll extends Item implements PickableItem{
         this.teleportX = getX();
         this.teleportY = getY();
     }
-    public Item onPick(Character trigger) {
+    public PickableItem onPick(Character trigger) {
         this.teleportX = getX();
         this.teleportY = getY();
         PickableItem.super.onPick(trigger);
         return this;
     }
 
-    public Item onUse(Character trigger) {
+    public void onUse(Character trigger) {
         trigger.setLocation(teleportX,teleportY);
-        return null;
+        UsableItem.super.onUse(trigger);
     }
 }

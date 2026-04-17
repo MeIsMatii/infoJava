@@ -52,9 +52,6 @@ public class Castle extends Actor
 				aliveSnakes.remove(snake);
 			}
 		}
-		if(aliveSnakes.size() <= maxMonster) {
-			return false;
-		}
-		return true;
-	}
+        return aliveSnakes.size() > maxMonster;
+    }
 }

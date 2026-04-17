@@ -16,7 +16,7 @@ public class Trap extends Item implements PickableItem{
         setImage(items.get(randNum).getImage());
     }
 
-    public Item onPick(Character trigger) {
+    public PickableItem onPick(Character trigger) {
         // hit characters inside radius of 1
         List<Character> neighbours = getObjectsInRange(1, Character.class);
         for (Character character: neighbours) {
